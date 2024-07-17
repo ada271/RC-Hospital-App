@@ -94,7 +94,7 @@ body {
 .falseStyle h3 {
   color: #152bbb;
 }
-/*! data daki bittiMi kısmı true iken görünecek stil */
+/*! data daki isDone kısmı true iken görünecek stil */
 .trueStil {
   display: flex;
   justify-content: space-between;
