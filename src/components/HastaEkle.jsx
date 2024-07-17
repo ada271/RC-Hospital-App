@@ -1,56 +1,61 @@
-import React, { useState } from "react";
-import uuid from "react-uuid";
+import React, { useState } from 'react'
+import uuid from "react-uuid"
+const HastaEkle = ({hastalar, setHastalar}) => {
+const[hastaName,setHastaName]=useState("")
+const[hastaTarih,setTarih]=useState("")
 
-const HastaEkle = ({ hastalar, setHastalar }) => {
-    const [hastaName, setHastaName] = useState("");
-    const [hastaTarih, setTarih] = useState("");
+const handleSubmitt=(e)=>{
+  e.preventDefault(); // direk submit olayını yapma önce alttaki kodlara bak
 
-    const handleSubmit = (e) => {
-        e.preventDefault(); //direkt submit yapma once alttaki kodlara bak
-        setHastalar([
-            ...hastalar,
-            {
-                id: uuid(),
-                text: hastaName,
-                day: hastaTarih,
-                isDone: false,
-                myDoctor: "DR Ipek Bilir",
-            },
-        ]);
-        // setHastalar a gidildiğinde hemen altta console.log varsa çalışıverir ve biz useState nin yaptığı işi göremeyiz. bunun için log bu submit fonksiyonunun dışında olmalı.
-        setHastaName("")
-        setTarih("")
-        // submit sonrası inputlardan value temizlemek için, hem alttaki işlemler yapılır, hemde inputlarda value={isim} yazarak browser da boşluksa boşluk isimse isim gözükmesi sağlanır
-    };
+  setHastalar([
+    ...hastalar,
+    {
+      id: uuid(),
+      text: hastaName,
+      day: hastaTarih,
+      isDone: false,
+      myDoctor: "DR İpek Bilir",
+    },
+  ]);
 
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <div className="formControl">
-                    <label htmlFor="text">Hasta Bilgileri</label>
-                    <input
-                        type="text"
-                        id="text"
-                        onChange={(e) => setHastaName(e.target.value)}
-                    />
-                </div>
+  // setHastalar a gidildiğinde hemen altta console.log varsa çalışıverir ve biz useState nin yaptığı işi göremeyiz. bunun için log bu submit fonksiyonunun dışında olmalı.
 
-                <div className="formControl">
-                    <label htmlFor="day">Day & Time</label>
-                    <input
-                        type="datetime-local"
-                        id="day"
-                        onChange={(e) => setTarih(e.target.value)}
-                    />
-                </div>
+  setHastaName("");
+  setTarih("");
+  // submit sonrası inputlardan value temizlemek için, hem üstteki işlemler yapılır, hemde inputlarda value={isim} yazarak browser da boşluksa boşluk isimse isim gözükmesi sağlanır
+}
+console.log(hastalar);
+  return (
+    <div>
+      <form onSubmit={handleSubmitt}>
+        <div className="formControl">
+          <label htmlFor="text">Hasta Bilgileri</label>
+          <input
+            type="text"
+            id="text"
+            onChange={(e) => setHastaName(e.target.value)}
 
-                <button type="submit" className="kayit">
-                    <span style={{ color: "#6a0707" }}>dr adi</span> icin kayit
-                    olustur
-                </button>
-            </form>
+            value={hastaName}
+          />
         </div>
-    );
-};
 
-export default HastaEkle;
+        <div className="formControl">
+          <label htmlFor="day">Day & Time</label>
+          <input
+            type="datetime-local"
+            id="day"
+            onChange={(e) => setTarih(e.target.value)}
+            value={hastaTarih}
+          />
+        </div>
+
+        <button type="submit" className="kayit btn-submit">
+          <span style={{ color: "#6a0707" }}> dr un adı</span> için kayıt
+          oluştur
+        </button>
+      </form>
+    </div>
+  );
+}
+
+export default HastaEkle
