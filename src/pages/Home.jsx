@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 import { doctorData } from "../helper/Data";
+import HastaEkle from "../components/HastaEkle";
+import HastaListe from "../components/HastaListe";
 
 const Home = () => {
     const [doktorlar, setDoktorlar] = useState(doctorData);
@@ -17,18 +19,25 @@ const Home = () => {
                                     width="180px"
                                     height="150px"
                                     className="btn"
-                                    style={{backgroundColor:"aqua"}}
+                                    style={{ backgroundColor: "aqua" }}
                                     src={doc.doctorImg}
                                     alt=""
                                 />
-                                <h4 style={{backgroundColor:"aqua", borderLeft:"10px solid blue"}}>{doc.doctorName}</h4>
+                                <h4
+                                    style={{
+                                        backgroundColor: "aqua",
+                                        borderLeft: "10px solid blue",
+                                    }}
+                                >
+                                    {doc.doctorName}
+                                </h4>
                             </div>
                         ))}
                     </div>
                 </header>
-                <div>{/* hasta ekle */}</div>
-                {/* hasta liste */}
+                <HastaEkle />
             </div>
+            <HastaListe />
         </div>
     );
 };
