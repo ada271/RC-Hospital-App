@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const HastaEkle = () => {
+const HastaEkle = ({hastalar, setHastalar}) => {
     const [hastaName, setHastaName] = useState("");
     const [hastaTarih, setTarih] = useState("");
     
